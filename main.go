@@ -1,12 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"github.com/fdaines/simple-rest-service/common/log"
+	"github.com/fdaines/simple-rest-service/infrastructure"
+	"net/http"
 )
 
 func main() {
-	log.Info("Initializing...")
+	log.Info("Initializing Handlers...")
+	infrastructure.CreatePromotionsHandler()
 
-	fmt.Println("Hello World!")
+	log.Info("Starting Server...")
+	err := http.ListenAndServe(":10000", nil)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
 }
