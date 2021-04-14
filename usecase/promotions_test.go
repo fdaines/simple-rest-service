@@ -45,7 +45,7 @@ func (tgr *RepositoryStub) GetPromotions() ([]*model.Promotion, error) {
 }
 
 
-func TestTransactionalCommercialUsecase(t *testing.T) {
+func TestPromotionsUseCase(t *testing.T) {
 	t.Run("should return expected promotions", func(t *testing.T) {
 		repositoryStub := &RepositoryStub{}
 		promotionsUseCase := NewPromotionsUseCase(repositoryStub)

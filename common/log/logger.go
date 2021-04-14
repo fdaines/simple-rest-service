@@ -12,9 +12,11 @@ type Logger struct {
 	log *zap.Logger
 }
 
-type Fields map[string]string
-
 var instance *Logger
+
+func SetLogger(log *zap.Logger) {
+	instance.log = log
+}
 
 func init() {
 	log := initLoggerZap()
@@ -60,34 +62,6 @@ func getLogLevel(logLevel string) zapcore.Level {
 	return zap.DebugLevel
 }
 
-func Field(key string, value string) Fields { return instance.Field(key, value) }
-func (logger *Logger) Field(key string, value string) Fields {
-	return Fields{
-		key:   key,
-		value: value,
-	}
-}
-
-func WithFields(fields Fields) *Logger { return instance.WithFields(fields) }
-func (logger *Logger) WithFields(fields Fields) *Logger {
-	logCustom := &Logger{
-		log: initLoggerZap(),
-	}
-	for k, v := range fields {
-		logCustom.log = logCustom.log.With(zap.String(k, v))
-	}
-	return logCustom
-}
-
-func WithError(err error) *Logger { return instance.WithError(err) }
-func (logger *Logger) WithError(err error) *Logger {
-	logCustom := &Logger{
-		log: initLoggerZap(),
-	}
-	logCustom.log = logCustom.log.With(zap.String("error", err.Error()))
-	return logCustom
-}
-
 func Info(message string, args ...interface{}) { instance.Info(message, args...) }
 func (logger *Logger) Info(message string, args ...interface{}) {
 	logger.log.Info(fmt.Sprintf(message, args...))
@@ -96,16 +70,6 @@ func (logger *Logger) Info(message string, args ...interface{}) {
 func Error(message string, args ...interface{}) { instance.Error(message, args...) }
 func (logger *Logger) Error(message string, args ...interface{}) {
 	logger.log.Error(fmt.Sprintf(message, args...))
-}
-
-func Debug(message string, args ...interface{}) { instance.Debug(message, args...) }
-func (logger *Logger) Debug(message string, args ...interface{}) {
-	logger.log.Debug(fmt.Sprintf(message, args...))
-}
-
-func Warn(message string, args ...interface{}) { instance.Warn(message, args...) }
-func (logger *Logger) Warn(message string, args ...interface{}) {
-	logger.log.Warn(fmt.Sprintf(message, args...))
 }
 
 func Fatal(message string, args ...interface{}) { instance.Fatal(message, args...) }

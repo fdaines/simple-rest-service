@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/fdaines/simple-rest-service/common/log"
 	"github.com/fdaines/simple-rest-service/infrastructure/dto"
-	"github.com/fdaines/simple-rest-service/infrastructure/repositories"
 	"github.com/fdaines/simple-rest-service/usecase"
 	"net/http"
 )
@@ -14,12 +13,9 @@ type PromotionsHandler struct {
 	useCase *usecase.PromotionsUseCase
 }
 
-
-func CreatePromotionsHandler() {
-	promotionsRepository := repositories.NewPromotionsRepository()
-	promotionsUseCase := usecase.NewPromotionsUseCase(promotionsRepository)
-	handler := &PromotionsHandler{promotionsUseCase}
-	http.HandleFunc("/", handler.handlerFunction)
+func CreatePromotionsHandler(useCase *usecase.PromotionsUseCase, mux *http.ServeMux) {
+	handler := &PromotionsHandler{useCase}
+	mux.HandleFunc("/promotions", handler.handlerFunction)
 }
 
 func (p *PromotionsHandler) handlerFunction(w http.ResponseWriter, r *http.Request) {

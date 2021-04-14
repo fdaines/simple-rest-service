@@ -8,10 +8,10 @@ import (
 
 func main() {
 	log.Info("Initializing Handlers...")
-	infrastructure.CreatePromotionsHandler()
+	serverMux := infrastructure.SetupMyHandlers()
 
 	log.Info("Starting Server...")
-	err := http.ListenAndServe(":10000", nil)
+	err := http.ListenAndServe(":10000", serverMux)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
