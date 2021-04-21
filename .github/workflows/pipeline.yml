@@ -32,21 +32,21 @@ jobs:
           disabled: structinit/remove
 #          blacklist-file: gomutest.blacklist
           output: verbose
-#  Arch-Go:
-#    needs: Mutation
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v1
-#      - uses: actions/setup-go@v2
-#        with:
-#          stable: 'false'
-#          go-version: '1.15'
-#      - name: Install Arch-Go
-#        run: go get -u github.com/fdaines/arch-go
-#      - name: Run Arch-Go
-#        run: arch-go
-  Deployment:
+  Arch-Go:
     needs: Mutation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-go@v2
+        with:
+          stable: 'false'
+          go-version: '1.15'
+      - name: Install Arch-Go
+        run: go get -u github.com/fdaines/arch-go
+      - name: Run Arch-Go
+        run: arch-go
+  Deployment:
+    needs: Arch-Go
     runs-on: ubuntu-latest
     steps:
       - name: Should deploy the artifact
