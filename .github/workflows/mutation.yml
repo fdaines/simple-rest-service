@@ -19,5 +19,9 @@ jobs:
         run: go get -t -v github.com/zimmski/go-mutesting/...
       - name: Run Go Mutesting
         run: go-mutesting ./infrastructure/...
+      - name: test pwd
+        run: pwd
+      - name: test env
+        run: env
 
 
