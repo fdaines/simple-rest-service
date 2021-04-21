@@ -45,5 +45,11 @@ jobs:
         run: go get -u github.com/fdaines/arch-go
       - name: Run Arch-Go
         run: arch-go
+  Deployment:
+    needs: Arch-Go
+    runs-on: ubuntu-latest
+    steps:
+      - name: Should deploy the artifact
+        run: echo "This step should deploy your artifact to Heroku."
 
 
