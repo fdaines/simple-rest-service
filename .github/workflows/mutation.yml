@@ -7,6 +7,16 @@ on:
       - master
 
 jobs:
+  Unit-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-go@v2
+        with:
+          stable: 'false'
+          go-version: '1.15'
+      - name: Run Unit-Tests
+        run: go test -cover ./...
   Mutation:
     runs-on: ubuntu-latest
     steps:
@@ -21,5 +31,17 @@ jobs:
           disabled: structinit/remove
 #          blacklist-file: gomutest.blacklist
           output: verbose
+  Arch-Go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-go@v2
+        with:
+          stable: 'false'
+          go-version: '1.15'
+      - name: Install Arch-Go
+        run: go get -u github.com/fdaines/arch-go
+      - name: Run Arch-Go
+        run: arch-go
 
 
