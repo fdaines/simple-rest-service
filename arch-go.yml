@@ -1,0 +1,27 @@
+dependenciesRules:
+  - package: "**.usecase.*"
+    shouldOnlyDependsOn:
+      - "**.model.**"
+      - "**.repository.**"
+  - package: "**.infrastructure.**"
+    shouldOnlyDependsOn:
+      - "**.simple-rest-service.**"
+
+contentsRules:
+  - package: "**.dto"
+    shouldOnlyContainStructs: true
+  - package: "**.simple-rest-service.repository"
+    shouldOnlyContainInterfaces: true
+  - package: "**.simple-rest-service.infrastructure"
+    shouldNotContainInterfaces: true
+
+functionsRules:
+  - package: "**.simple-rest-service.**"
+    maxParameters: 4
+    maxReturnValues: 2
+    maxPublicFunctionPerFile: 7
+    maxLines: 50
+
+cyclesRules:
+  - package: "**.simple-rest-service.**"
+    shouldNotContainCycles: true
