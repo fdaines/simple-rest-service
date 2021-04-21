@@ -14,18 +14,22 @@ type PromotionsHandler struct {
 }
 
 func CreatePromotionsHandler(useCase *usecase.PromotionsUseCase, mux *http.ServeMux) {
-	handler := &PromotionsHandler{useCase}
+	handler := &PromotionsHandler{useCase }
 	mux.HandleFunc("/promotions", handler.handlerFunction)
 }
 
 func (p *PromotionsHandler) handlerFunction(w http.ResponseWriter, r *http.Request) {
+	promotions := p.useCase.ResolveCustomPromotions()
+
 	response := &dto.PromotionsResponse{
-		Promotions: p.useCase.ResolveCustomPromotions(),
+		Promotions: promotions,
 	}
 	resp, err := json.Marshal(response)
+//	resp, err := p.mapper.MapToDto(promotions)
 	if err != nil {
 		log.Error("Error: %s", err.Error())
 		return
 	}
 	fmt.Fprintf(w, string(resp))
 }
+
