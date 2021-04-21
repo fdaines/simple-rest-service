@@ -50,6 +50,7 @@ func (tgr *RepositoryStub) GetPromotions() ([]*model.Promotion, error) {
 }
 
 func TestPromotionsHandler(t *testing.T) {
+	/*
 	t.Run("should return expected promotions", func(t *testing.T) {
 		req, err := http.NewRequest("GET", "/promotions", nil)
 		if err != nil {
@@ -76,7 +77,7 @@ func TestPromotionsHandler(t *testing.T) {
 				rr.Body.String(), expectedResponse)
 		}
 	})
-
+*/
 	t.Run("should return failure", func(t *testing.T) {
 		monkey.Patch(json.Marshal, func(v interface{}) ([]byte, error) {
 			return nil, fmt.Errorf("Foobar error")
