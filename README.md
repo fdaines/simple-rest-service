@@ -33,6 +33,7 @@ $ go-mutesting ./...
 
 ## SonarQube Static Analysis
 Dashboard: https://sonarcloud.io/dashboard?id=fdaines_simple-rest-service
+To change the service version, edit the `sonar.projectVersion` property from `.sonarcloud.properties` file
 
 ## Architecture Tests
 ```
