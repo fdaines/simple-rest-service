@@ -5,6 +5,8 @@ Simple REST service is a sample project
 ## Requirements
 - Go 1.15+
 
+for check if Go is intalled, run: `go version`
+
 ## Running the service
 ```
 $ go run main.go
