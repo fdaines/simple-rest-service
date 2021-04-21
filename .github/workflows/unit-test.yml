@@ -1,0 +1,21 @@
+name: 'arch-go'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  Unit-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-go@v2
+        with:
+          stable: 'false'
+          go-version: '1.15'
+      - name: Run Unit-Tests
+        run: go test ./...
+
+
