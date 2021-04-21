@@ -2,6 +2,9 @@
 
 Simple REST service is a sample project
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fdaines_simple-rest-service&metric=alert_status)](https://sonarcloud.io/dashboard?id=fdaines_simple-rest-service)
+
+
 ## Requirements
 - Go 1.15+
 
