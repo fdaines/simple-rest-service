@@ -1,4 +1,4 @@
-name: 'testing'
+name: 'mutation'
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  Unit-Test:
+  Mutation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -15,7 +15,9 @@ jobs:
         with:
           stable: 'false'
           go-version: '1.15'
-      - name: Run Unit-Tests
-        run: go test -cover ./...
+      - name: Install Go Mutesting
+        run: go get -u https://github.com/zimmski/go-mutesting
+      - name: Run Go Mutesting
+        run: go-mutesting ./...
 
 

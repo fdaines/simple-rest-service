@@ -1,4 +1,4 @@
-name: 'testing'
+name: 'arch-go'
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  Unit-Test:
+  Arch-Go:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -15,7 +15,8 @@ jobs:
         with:
           stable: 'false'
           go-version: '1.15'
-      - name: Run Unit-Tests
-        run: go test -cover ./...
-
+      - name: Install Arch-Go
+        run: go get -u github.com/fdaines/arch-go
+      - name: Run Arch-Go
+        run: arch-go
 
