@@ -11,7 +11,7 @@ func SetupMyHandlers() *http.ServeMux {
 
 	promotionsRepository := repositories.NewPromotionsRepository()
 	promotionsUseCase := usecase.NewPromotionsUseCase(promotionsRepository)
-	CreatePromotionsHandler(promotionsUseCase, mux)
+	createPromotionsHandler(promotionsUseCase, mux)
 
 	return mux
 }

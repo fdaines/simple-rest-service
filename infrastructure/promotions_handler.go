@@ -13,7 +13,7 @@ type PromotionsHandler struct {
 	useCase *usecase.PromotionsUseCase
 }
 
-func CreatePromotionsHandler(useCase *usecase.PromotionsUseCase, mux *http.ServeMux) {
+func createPromotionsHandler(useCase *usecase.PromotionsUseCase, mux *http.ServeMux) {
 	handler := &PromotionsHandler{useCase }
 	mux.HandleFunc("/promotions", handler.handlerFunction)
 }
