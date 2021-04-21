@@ -15,7 +15,7 @@ jobs:
         with:
           stable: 'false'
           go-version: '1.15'
-      - name: Run Unit-Tests
-        run: go test -cover ./...
+#      - name: Run Unit-Tests
+#        run: go test -cover ./...
 
 

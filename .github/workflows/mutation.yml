@@ -21,5 +21,9 @@ jobs:
         run: pwd
       - name: test env
         run: env
+      - name: move to GOROOT
+        run: cd $GOROOT_1_15_X64
+      - name: ls
+        run: ls
 
 
