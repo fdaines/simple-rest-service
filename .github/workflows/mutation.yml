@@ -15,17 +15,11 @@ jobs:
         with:
           stable: 'false'
           go-version: '1.15'
-      - name: Install Go Mutesting
-        run: go get -t -v github.com/zimmski/go-mutesting/...
-      - name: test pwd
-        run: pwd
-      - name: test env
-        run: env
-      - name: move to GOROOT
-        run: cd $GOROOT
-      - name: pwd
-        run: pwd
-      - name: ls
-        run: ls
+      - uses: rescDev/go-mutesting-action@<version>
+          with:
+            targets: main.go entrypoint.go cmd/
+            disabled: structinit/remove
+            blacklist-file: gomutest.blacklist
+            output: verbose
 
 
