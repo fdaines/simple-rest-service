@@ -20,7 +20,7 @@ func (tgr *RepositoryStub) GetPromotions() ([]*model.Promotion, error) {
 			Title: "Promotion 1",
 			Description: "Brief description of promotion 1",
 			StartDate: "2021-01-28",
-			EndDate: "2021-01-15",
+			EndDate: "2021-02-28",
 			IsActive: false,
 		},
 		&model.Promotion{
@@ -34,14 +34,14 @@ func (tgr *RepositoryStub) GetPromotions() ([]*model.Promotion, error) {
 			Title: "Promotion 3",
 			Description: "Brief description of promotion 3",
 			StartDate: "2021-03-29",
-			EndDate: "2021-05-28",
+			EndDate: "2021-05-29",
 			IsActive: true,
 		},
 		&model.Promotion{
 			Title: "Promotion 4",
 			Description: "Brief description of promotion 4",
 			StartDate: "2021-03-30",
-			EndDate: "2021-05-28",
+			EndDate: "2021-05-30",
 			IsActive: true,
 		},
 	}
