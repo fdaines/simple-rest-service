@@ -29,6 +29,8 @@ $ go get -v github.com/zimmski/go-mutesting
 $ go-mutesting ./...
 ```
 
+## SonarQube Static Analysis
+Dashboard: https://sonarcloud.io/dashboard?id=fdaines_simple-rest-service
 
 ## Architecture Tests
 ```
