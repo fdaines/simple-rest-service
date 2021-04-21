@@ -1,4 +1,4 @@
-name: 'mutation'
+name: 'testing-pipeline'
 
 on:
   workflow_dispatch:
